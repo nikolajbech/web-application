@@ -16,7 +16,8 @@
     "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down",
     "gen:component": "node scripts/component.js",
-    "gen:page": "node scripts/page.js",
+    "gen:page": "node scripts/page.js normal",
+    "gen:pageWithAuth": "node scripts/page.js auth",
     "gen:contextHook": "node scripts/contextHook.js",
     "gen:crud": "node scripts/crud.js",
     "gen:crudHook": "node scripts/crudHook.js"
