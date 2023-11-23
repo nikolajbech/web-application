@@ -7,10 +7,14 @@
     "build": "next build",
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
-    "dev": "next dev",
+    "db:migration": "prisma migrate dev --skip-generate",
+    "db:migrate": "prisma migrate deploy",
+    "dev": "yarn docker:up && next dev",
     "postinstall": "prisma generate",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",

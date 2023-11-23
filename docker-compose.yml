@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:15
+    restart: always
+    container_name: web-app-postgres
+    ports:
+      - '5444:5432'
+    environment:
+      POSTGRES_USER: prisma
+      POSTGRES_PASSWORD: prisma
+      POSTGRES_DB: db
