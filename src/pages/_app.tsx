@@ -3,6 +3,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { type Session } from 'next-auth'
 import { SessionProvider } from 'next-auth/react'
 
+import { GlobalStateProvider } from '~/hooks/useGlobalState'
 import { theme } from '~/styles/theme'
 import { api } from '~/utils/api'
 
@@ -13,7 +14,9 @@ const MyApp: AppType<{ session: Session | null }> = ({
   return (
     <SessionProvider session={session}>
       <ChakraProvider theme={theme}>
-        <Component {...pageProps} />
+        <GlobalStateProvider>
+          <Component {...pageProps} />
+        </GlobalStateProvider>
       </ChakraProvider>
     </SessionProvider>
   )

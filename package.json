@@ -14,7 +14,11 @@
     "lint": "next lint",
     "start": "next start",
     "docker:up": "docker-compose up -d",
-    "docker:down": "docker-compose down"
+    "docker:down": "docker-compose down",
+    "gen:component": "node scripts/component.js",
+    "gen:page": "node scripts/page.js",
+    "gen:contextHook": "node scripts/contextHook.js",
+    "gen:crudHook": "node scripts/crudHook.js"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",
@@ -38,6 +42,7 @@
     "next-pwa": "^5.6.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-infinite-scroll-component": "^6.1.0",
     "superjson": "^2.2.1",
     "zod": "^3.22.4"
   },
