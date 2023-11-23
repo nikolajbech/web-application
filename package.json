@@ -18,6 +18,7 @@
     "gen:component": "node scripts/component.js",
     "gen:page": "node scripts/page.js",
     "gen:contextHook": "node scripts/contextHook.js",
+    "gen:crud": "node scripts/crud.js",
     "gen:crudHook": "node scripts/crudHook.js"
   },
   "dependencies": {

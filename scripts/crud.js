@@ -100,13 +100,11 @@ export const create${name} = protectedProcedure
   .input(create${name}Schema)
   .mutation(async ({ input, ctx }) => {
     const { db, session } = ctx
-    const { title, content } = input
+    const { name } = input
 
     return db.${lowerCased}.create({
       data: {
-        title,
-        content,
-        authorId: session.user.id,
+        name,
       },
     })
   })
@@ -119,16 +117,14 @@ export const update${name} = protectedProcedure
   .input(update${name}Schema)
   .mutation(async ({ input, ctx }) => {
     const { db, session } = ctx
-    const { id, title, content } = input
+    const { id, name } = input
 
     return db.${lowerCased}.update({
       where: {
         id,
-        authorId: session.user.id,
       },
       data: {
-        title,
-        content,
+        name,
       },
     })
   })
@@ -151,7 +147,6 @@ export const delete${name} = protectedProcedure
     const ${lowerCased}ToDelete = await db.${lowerCased}.findUnique({
       where: {
         id,
-        authorId: session.user.id,
       },
     })
 
