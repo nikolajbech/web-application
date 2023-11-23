@@ -57,7 +57,6 @@ const Modal: FC<Props> = (p) => {
         m={2}
         maxH={p.maxH ?? '90vh'}
         maxW={p.maxW}
-        bg='bg'
         borderRadius={BORDER_RADIUS}
         borderWidth={1}
         boxShadow='none'

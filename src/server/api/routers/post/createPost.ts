@@ -1,11 +1,5 @@
-import { z } from 'zod'
-
 import { protectedProcedure } from '../../trpc'
-
-export const createPostSchema = z.object({
-  title: z.string(),
-  content: z.string().optional(),
-})
+import { createPostSchema } from './schema'
 
 export const createPost = protectedProcedure
   .input(createPostSchema)

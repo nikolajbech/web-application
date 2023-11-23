@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import fs from 'fs'
 
 // Extract arguments
@@ -5,12 +7,10 @@ const contextHookName = process.argv[2]?.trim()
 
 // Check arguments
 
-// @ts-ignore
 if (contextHookName[0].startsWith('use')) {
   throw Error('Should not start with use. This will be added automatically')
 }
 
-// @ts-ignore
 if (contextHookName[0].toUpperCase() !== contextHookName[0]) {
   throw Error('contextHook name must start with a capital letter')
 }
