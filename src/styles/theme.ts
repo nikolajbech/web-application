@@ -19,7 +19,7 @@ const styles = {
       bg: mode('gray.100', 'gray.900')(props),
     },
     ':root': {
-      '--chakra-colors-hover-500': mode('gray.300', '#ff09ff')(props),
+      '--chakra-colors-hover-500': mode('#292B34', '#9AE6B4')(props),
     },
   }),
 }

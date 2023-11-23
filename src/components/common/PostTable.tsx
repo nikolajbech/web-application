@@ -38,7 +38,9 @@ const PostTable: FC = () => {
       ]}
       size='sm'
       isLoading={isLoading}
-      onRowClick={(v) => openUpdatePost(v as UpdatePostSchema)}
+      onRowClick={(v) =>
+        openUpdatePost({ ...v, content: v.content ?? '' } as UpdatePostSchema)
+      }
     />
   )
 }

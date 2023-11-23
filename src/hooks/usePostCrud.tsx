@@ -37,7 +37,7 @@ export const usePostCrud = () => {
           createPost
             .mutateAsync({
               title,
-              content,
+              content: content ?? '',
             })
             .then((data) => resolve(data))
         } catch (error) {
@@ -70,7 +70,7 @@ export const usePostCrud = () => {
             .mutateAsync({
               id,
               title,
-              content,
+              content: content ?? '',
             })
             .then((data) => resolve(data))
         } catch (error) {
