@@ -15,7 +15,6 @@ export const updatePost = protectedProcedure
       data: {
         title,
         content,
-        authorId: session.user.id,
       },
     })
   })

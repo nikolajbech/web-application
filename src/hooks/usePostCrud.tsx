@@ -1,6 +1,8 @@
 import {
   CreatePostSchema,
   createPostSchema,
+  UpdatePostSchema,
+  updatePostSchema,
 } from '~/server/api/routers/post/schema'
 import { api } from '~/utils/api'
 import { useConfirm } from './useConfirm'
@@ -11,6 +13,7 @@ export const usePostCrud = () => {
   const { confirm } = useConfirm()
 
   const createPost = api.post.createPost.useMutation()
+  const updatePost = api.post.updatePost.useMutation()
   const deletePost = api.post.deletePost.useMutation()
 
   const { open: openCreatePost } = useCreateUpdate<CreatePostSchema>({
@@ -21,7 +24,7 @@ export const usePostCrud = () => {
         kind: 'input',
       },
       content: {
-        label: 'Title',
+        label: 'Content',
         kind: 'textarea',
         optional: true,
       },
@@ -33,6 +36,39 @@ export const usePostCrud = () => {
         try {
           createPost
             .mutateAsync({
+              title,
+              content,
+            })
+            .then((data) => resolve(data))
+        } catch (error) {
+          reject()
+        }
+      }),
+    onSuccess: async () => {
+      await utils.post.posts.invalidate()
+    },
+  })
+  const { open: openUpdatePost } = useCreateUpdate<UpdatePostSchema>({
+    type: 'update',
+    formConfig: {
+      title: {
+        label: 'Title',
+        kind: 'input',
+      },
+      content: {
+        label: 'Content',
+        kind: 'textarea',
+        optional: true,
+      },
+    },
+    zodSchema: updatePostSchema,
+    entityName: 'Post',
+    mutation: ({ id, title, content }) =>
+      new Promise((resolve, reject) => {
+        try {
+          updatePost
+            .mutateAsync({
+              id,
               title,
               content,
             })
@@ -65,6 +101,7 @@ export const usePostCrud = () => {
 
   return {
     openCreatePost,
+    openUpdatePost,
     openDeletePost,
   }
 }

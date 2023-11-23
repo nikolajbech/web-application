@@ -63,7 +63,7 @@ export function InitifyScrollTable<T>(p: Props<T>) {
                   key={i}
                   _hover={
                     p.onRowClick
-                      ? { bg: 'hover', cursor: 'pointer' }
+                      ? { bg: 'hover.500', cursor: 'pointer' }
                       : undefined
                   }
                   onClick={() => p.onRowClick?.(item)}

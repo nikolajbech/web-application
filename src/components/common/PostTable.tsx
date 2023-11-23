@@ -1,10 +1,14 @@
 import { FC } from 'react'
 
+import { usePostCrud } from '~/hooks/usePostCrud'
 import { PostFromPosts } from '~/server/api/routers/post/posts'
+import { UpdatePostSchema } from '~/server/api/routers/post/schema'
 import { api } from '~/utils/api'
 import InfinityScrollTable from './InfinityScrollTable'
 
 const PostTable: FC = () => {
+  const { openUpdatePost } = usePostCrud()
+
   const { data, fetchNextPage, hasNextPage, isLoading } =
     api.post.posts.useInfiniteQuery(
       {
@@ -34,6 +38,7 @@ const PostTable: FC = () => {
       ]}
       size='sm'
       isLoading={isLoading}
+      onRowClick={(v) => openUpdatePost(v as UpdatePostSchema)}
     />
   )
 }
