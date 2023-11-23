@@ -20,7 +20,8 @@
     "gen:pageWithAuth": "node scripts/page.js auth",
     "gen:contextHook": "node scripts/contextHook.js",
     "gen:crud": "node scripts/crud.js",
-    "gen:crudHook": "node scripts/crudHook.js"
+    "gen:crudHook": "node scripts/crudHook.js",
+    "github": "open https://github.com/nikolajbech/web-application"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",
