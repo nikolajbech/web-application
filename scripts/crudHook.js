@@ -100,7 +100,7 @@ export const use${name}Crud = () => {
     },
   })
 
-  const openDelete${name} = (id?: string) => {
+  const openDelete${name} = ({ id }: { id?: string }) => {
     if (!id) return
 
     confirm({

@@ -3,6 +3,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { type Session } from 'next-auth'
 import { SessionProvider } from 'next-auth/react'
 
+import { ConfirmProvider } from '~/hooks/useConfirm'
 import { CrudProvider } from '~/hooks/useCrud'
 import { GlobalStateProvider } from '~/hooks/useGlobalState'
 import { theme } from '~/styles/theme'
@@ -16,9 +17,11 @@ const MyApp: AppType<{ session: Session | null }> = ({
     <SessionProvider session={session}>
       <ChakraProvider theme={theme}>
         <GlobalStateProvider>
-          <CrudProvider>
-            <Component {...pageProps} />
-          </CrudProvider>
+          <ConfirmProvider>
+            <CrudProvider>
+              <Component {...pageProps} />
+            </CrudProvider>
+          </ConfirmProvider>
         </GlobalStateProvider>
       </ChakraProvider>
     </SessionProvider>
