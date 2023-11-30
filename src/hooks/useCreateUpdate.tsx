@@ -70,10 +70,11 @@ export function useCreateUpdate<T>(
         onCancel={closeModal}
         onSubmit={(val, cb) => {
           p.mutation(val as T)
-            .catch((e: unknown) => {
-              onError(JSON.stringify(e))
+            .catch((e: string) => {
+              onError(e)
             })
-            .then(async () => {
+            .then(async (data) => {
+              if (!data) return
               _onSuccess()
               await p.onSuccess?.()
             })

@@ -25,6 +25,7 @@ const snippet = `import {
 import { api } from '~/utils/api'
 import { useConfirm } from './useConfirm'
 import { useCreateUpdate } from './useCreateUpdate'
+import { TRPCClientErrorLike } from '@trpc/client'
 
 export const use${name}Crud = () => {
   const utils = api.useUtils()
@@ -51,16 +52,16 @@ export const use${name}Crud = () => {
     entityName: '${name}',
     mutation: ({ title, content }) =>
       new Promise((resolve, reject) => {
-        try {
-          create${name}
-            .mutateAsync({
-              title,
-              content,
-            })
-            .then((data) => resolve(data))
-        } catch (error) {
-          reject()
-        }
+        create${name}
+          .mutateAsync({
+            id,
+            title,
+            content,
+          })
+          .then((data) => resolve(data))
+          .catch((error: TRPCClientErrorLike<AppRouter>) => {
+            reject(error.message)
+          })
       }),
     onSuccess: async () => {
       await utils.${lowerCased}.${lowerCased}s.invalidate()
@@ -83,17 +84,16 @@ export const use${name}Crud = () => {
     entityName: '${name}',
     mutation: ({ id, title, content }) =>
       new Promise((resolve, reject) => {
-        try {
-          update${name}
-            .mutateAsync({
-              id,
-              title,
-              content,
-            })
-            .then((data) => resolve(data))
-        } catch (error) {
-          reject()
-        }
+        update${name}
+          .mutateAsync({
+            id,
+            title,
+            content,
+          })
+          .then((data) => resolve(data))
+          .catch((error: TRPCClientErrorLike<AppRouter>) => {
+            reject(error.message)
+          })
       }),
     onSuccess: async () => {
       await utils.${lowerCased}.${lowerCased}s.invalidate()

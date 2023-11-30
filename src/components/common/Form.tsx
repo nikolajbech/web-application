@@ -479,6 +479,7 @@ function SelectInternal<T>(props: FormControlProps<T, SelectField>) {
           {...childProps}
           placeholder='Select option'
           isClearable
+          selectedOptionStyle='check'
           chakraStyles={{
             control: (provided) => ({
               ...provided,
@@ -527,6 +528,7 @@ function CreatableSelectInternal<T>(
           placeholder='Select or create option...'
           size='md'
           useBasicStyles
+          selectedOptionStyle='check'
           isClearable
           chakraStyles={{
             control: (provided) => ({
